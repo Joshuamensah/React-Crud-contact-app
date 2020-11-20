@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
+import { addContact } from './store/ContactsActions'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Contacts from "./Components/Contacts";
@@ -6,40 +8,10 @@ import AddContactForm from "./Components/AddContactForm";
 import "./App.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      contacts: [
-        {
-          name: "Joshua Mensah",
-          phoneNumber: "+233242136305",
-          address: "St luke church",
-          type: "Mobile",
-          id: "094484fdfkjskks",
-        },
-
-        {
-          name: "Susana Mensah",
-          phoneNumber: "+233540166333",
-          address: "St luke church",
-          type: "Mobile",
-          id: "hfhfdkfd98833",
-        },
-        {
-          name: "Agnes Siaw",
-          phoneNumber: "+233242323756",
-          address: "St luke church",
-          type: "land line",
-          id: "nhff877370",
-        },
-      ],
-    };
-  }
-  addNewContact = (contact) => {
-    contact.id = Math.random().toString();
-    this.setState({
-      contacts: [...this.state.contacts, contact],
-    });
+  
+  addNewContact = (newContact) => {
+    //contact.id = Math.random().toString();
+    this.props.addContact(newContact)
   };
 
   deleteContact = (id) => {
@@ -70,7 +42,7 @@ class App extends Component {
             <Col>
             <h4>ALL CONTACTS</h4>
             <br/>
-              <Contacts contactData={this.state.contacts} deleteContact={this.deleteContact} editContact={this.editContact} />
+              <Contacts contactData={this.props.contacts} deleteContact={this.deleteContact} editContact={this.editContact} />
             </Col>
           </Row>
         </Container>
@@ -79,4 +51,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps =(state) => ({
+  contacts: state.contacts
+});
+
+const mapDispatchToProps = {
+  addContact: addContact
+}
+
+export default  connect (mapStateToProps, mapDispatchToProps)(App);
