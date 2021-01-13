@@ -37,7 +37,7 @@ const Contact = (props) => {
             <p> Name:{props.contactInfo.name}</p>
             <p> PhoneNumber:{props.contactInfo.phoneNumber}</p>
             <p> Address: {props.contactInfo.address}</p>
-            <p> Type: {props.contactInfo.type}</p>
+            <p> Group: {props.contactInfo.group}</p>
           </Card.Text>
           <Card.Link href="#" onClick={handleShow}>Edit</Card.Link>
           <Card.Link href="#"><Button variant="danger" size="sm" onClick={handleDelete}>Delete</Button> </Card.Link>

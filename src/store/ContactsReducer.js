@@ -6,7 +6,7 @@ const initialState = {
           name: "Joshua Mensah",
           phoneNumber: "+233242136305",
           address: "St luke church",
-          type: "Mobile",
+          group: "Family",
           id: "094484fdfkjskks",
         },
 
@@ -14,14 +14,14 @@ const initialState = {
           name: "Susana Mensah",
           phoneNumber: "+233540166333",
           address: "St luke church",
-          type: "Mobile",
+          group: "Family",
           id: "hfhfdkfd98833",
         },
         {
           name: "Agnes Siaw",
           phoneNumber: "+233242323756",
           address: "St luke church",
-          type: "land line",
+          group: "Friend",
           id: "nhff877370",
         },
       ],
@@ -35,7 +35,7 @@ const ContactsReducer = (state = initialState, action) => {
                 name: action.payload.name,
                 phoneNumber: action.payload.phoneNumber,
                 address: action.payload.address,
-                type: action.payload.type
+                group: action.payload.group
             };
             return {...state,contacts:[...state.contacts, newContact ]};
         

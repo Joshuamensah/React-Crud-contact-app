@@ -8,7 +8,7 @@ class AddContactForm extends Component {
             name: "",
             phoneNumber: "",
             address: "",
-            type: ""
+            group: ""
         }
     }
 
@@ -27,7 +27,7 @@ class AddContactForm extends Component {
             name: "",
             phoneNumber: "",
             address: "",
-            type: ""
+            group: ""
 
         });
 
@@ -51,8 +51,8 @@ class AddContactForm extends Component {
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Type</Form.Label>
-            <Form.Control type="text" placeholder="Enter PhoneNumber type"  name="type" value={this.state.type} onChange={this.handleChange}/>
+            <Form.Label>Group</Form.Label>
+            <Form.Control type="text" placeholder="Enter Group type"  name="type" value={this.state.group} onChange={this.handleChange}/>
           </Form.Group>
           
           <Button variant="primary" type="submit">

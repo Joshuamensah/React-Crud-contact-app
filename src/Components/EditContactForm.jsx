@@ -8,7 +8,7 @@ class EditContactForm extends Component {
             name: props.contactInfo.name,
             phoneNumber: props.contactInfo.phoneNumber,
             address: props.contactInfo.address,
-            type: props.contactInfo.type,
+            group: props.contactInfo.group,
             id: props.contactInfo.id
         }
     }
@@ -28,7 +28,7 @@ class EditContactForm extends Component {
             name: "",
             phoneNumber: "",
             address: "",
-            type: ""
+            group: ""
 
         });
         this.props.closeModal()
@@ -53,8 +53,8 @@ class EditContactForm extends Component {
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Type</Form.Label>
-            <Form.Control type="text" placeholder="type"  name="type" value={this.state.type} onChange={this.handleChange}/>
+            <Form.Label>Group</Form.Label>
+            <Form.Control type="text" placeholder="type"  name="type" value={this.state.group} onChange={this.handleChange}/>
           </Form.Group>
           
           <Button variant="primary" type="submit">
