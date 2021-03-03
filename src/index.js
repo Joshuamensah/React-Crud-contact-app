@@ -3,12 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import  thunk  from "redux-thunk";
+import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
+import {getFirestore, reduxFirestore } from 'redux-firestore'
 import ContactsReducer from "./store/ContactsReducer";
+import firebase from '../Firebase/Firebase';
 
-const store = createStore(ContactsReducer, applyMiddleware(thunk));
+
+const store = createStore(ContactsReducer,
+   compose (
+   
+    applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
+    reactReduxFirebase(firebase),
+    reduxFirestore(firebase),
+   )
+),
 
 ReactDOM.render(
   <React.StrictMode>
